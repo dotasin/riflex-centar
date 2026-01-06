@@ -188,7 +188,7 @@
       "@type": "LocalBusiness",
       "@id": "https://riflexcentar.rs",
       "name": "Riflex Centar",
-      "description": "Profesionalni centar za fizioterapiju, masažu i wellness u Petrovaradinu. Nudimo Mulligan metodu, kinezitape, terapeutske i sportske masaže, maderoterapiju, presoterapiju i korektivnu gimnastiku.",
+      "description": "Profesionalni centar za fizioterapiju, masažu i wellness u Petrovaradinu. Nudimo Mulligan metodu, maderoterapija, terapeutske i sportske masaže, presoterapiju i korektivnu gimnastiku.",
       "url": "https://riflexcentar.rs",
       "telephone": "+381123456789",
       "email": "ivan.tasin@gmail.com",
@@ -856,23 +856,39 @@
             <div class="contact-content">
                 <div class="contact-form">
                     <div class="success-message" id="successMessage">Poruka je uspešno poslata!</div>
-                    <form id="contactForm" itemscope itemtype="https://schema.org/ContactPoint">
-                        <div class="form-group">
-                            <label class="translate" data-key="form_name">Ime i prezime</label>
-                            <input type="text" name="name" required>
+                    <form id="contactForm" action="php/contact.php" method="post" itemscope itemtype="https://schema.org/ContactPoint" data-use-server="1">
+                        <div class="row" style="display:flex;gap:1rem;flex-wrap:wrap;">
+                            <div style="flex:1;min-width:200px;">
+                                <div class="form-group">
+                                    <label class="translate" data-key="form_name">Ime i prezime</label>
+                                    <input type="text" name="author" required placeholder="Ime prezime">
+                                </div>
+                            </div>
+                            <div style="flex:1;min-width:200px;">
+                                <div class="form-group">
+                                    <label class="translate" data-key="form_email">Email</label>
+                                    <input type="email" name="email" required placeholder="Email">
+                                </div>
+                            </div>
+                            <div style="flex:1;min-width:200px;">
+                                <div class="form-group">
+                                    <label>Naslov</label>
+                                    <input type="text" name="subject" required placeholder="Tema">
+                                </div>
+                            </div>
+                            <div style="flex:1;min-width:200px;">
+                                <div class="form-group">
+                                    <label class="translate" data-key="form_phone">Telefon</label>
+                                    <input type="tel" name="phone" placeholder="Telefon">
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="translate" data-key="form_email">Email</label>
-                            <input type="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="translate" data-key="form_phone">Telefon</label>
-                            <input type="tel" name="phone" required>
-                        </div>
+
                         <div class="form-group">
                             <label class="translate" data-key="form_message">Poruka</label>
-                            <textarea name="message" required></textarea>
+                            <textarea name="message" required placeholder="Vaša poruka"></textarea>
                         </div>
+
                         <button type="submit" class="submit-btn translate" data-key="form_submit">Pošalji</button>
                     </form>
                 </div>
@@ -915,6 +931,9 @@
             <p>&copy; 2025 Riflex Centar. <span class="translate" data-key="footer_rights">Sva prava zadržana.</span></p>
         </div>
     </footer>
+
+    <!-- dodaj EmailJS skriptu i novi glavni <script> blok -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
     <script>
         // Translations data
@@ -1060,11 +1079,11 @@
                     applications: ["Akutne i hronične povrede", "Bolovi u zglobovima i mišićima", "Ograničeni pokreti i ukočenost"]
                 },
                 {
-                    title: "Kinezitape",
+                    title: "Maderoterapija",
                     icon: "🎗️",
-                    image: "kinezitape.jpg",
-                    benefits: ["Ubrzava regeneraciju tkiva", "Smanjuje bol i upalu", "Relaksira ili stimuliše mišiće", "Povećava pokretljivost i stabilnost zglobova"],
-                    applications: ["Vodootporna, bez lateksa", "Ostaje na koži 3–5 dana", "Pogodna za sportiste"]
+                    image: "maderoterapija.jpg",
+                    benefits: ["Smanjuje celulit", "Oblikuje i zateže telo", "Poboljšava cirkulaciju i limfnu drenažu", "Uklanja višak tečnosti i toksine", "Ubrzava metabolizam", "Poboljšava tonus i elastičnost kože"],
+                    applications: ["Stomak, butine, zadnjica", "Ruke i leđa", "Lice i dekolte" ]
                 },
                 {
                     title: "Stecco fascijalna manipulacija",
@@ -1111,11 +1130,11 @@
                     applications: ["Acute and chronic injuries", "Joint and muscle pain", "Limited movement and stiffness"]
                 },
                 {
-                    title: "Kinesio Taping",
+                    title: "Wood Therapy",
                     icon: "🎗️",
-                    image: "kinezitape.jpg",
-                    benefits: ["Accelerates tissue regeneration", "Reduces pain and inflammation", "Relaxes or stimulates muscles", "Increases joint mobility and stability"],
-                    applications: ["Waterproof and latex-free", "Stays on skin for 3–5 days", "Suitable for athletes"]
+                    image: "maderoterapija.jpg",
+                    benefits: [ "Reduces cellulite", "Shapes and tightens the body", "Improves circulation and lymphatic drainage", "Eliminates excess fluids and toxins","Boosts metabolism","Improves skin tone and elasticity"],
+                    applications: ["Abdomen, thighs, buttocks", "Arms and back", "Face and décolleté"]
                 },
                 {
                     title: "Stecco Fascial Manipulation",
@@ -1162,11 +1181,22 @@
                     applications: ["Akute und chronische Verletzungen", "Gelenk- und Muskelschmerzen", "Eingeschränkte Beweglichkeit und Steifheit"]
                 },
                 {
-                    title: "Kinesio-Taping",
+                    title: "Maderotherapie",
                     icon: "🎗️",
-                    image: "kinezitape.jpg",
-                    benefits: ["Beschleunigt die Geweberegeneration", "Reduziert Schmerzen und Entzündungen", "Entspannt oder stimuliert Muskeln", "Steigert Gelenkbeweglichkeit und Stabilität"],
-                    applications: ["Wasserfest und latexfrei", "Hält 3–5 Tage auf der Haut", "Geeignet für Sportler"]
+                    image: "maderoterapija.jpg",
+                    benefits: [
+                        "Reduziert Cellulite",
+                        "Formt und strafft den Körper",
+                        "Verbessert die Durchblutung und den Lymphfluss",
+                        "Entfernt überschüssige Flüssigkeit und Giftstoffe",
+                        "Beschleunigt den Stoffwechsel",
+                        "Verbessert den Hautton und die Elastizität"
+                    ],
+                    applications: [
+                        "Bauch, Oberschenkel, Gesäß",
+                        "Arme und Rücken",
+                        "Gesicht und Dekolleté"
+                    ]
                 },
                 {
                     title: "Stecco-Faszientherapie",
@@ -1213,11 +1243,22 @@
                     applications: ["Острые и хронические травмы", "Боли в суставах и мышцах", "Ограничение подвижности и скованность"]
                 },
                 {
-                    title: "Кинезиотейп",
+                    title: "Мадеротерапия",
                     icon: "🎗️",
-                    image: "kinezitape.jpg",
-                    benefits: ["Ускоряет восстановление тканей", "Снижает боль и воспаление", "Расслабляет или стимулирует мышцы", "Повышает подвижность суставов и их стабильность"],
-                    applications: ["Водостойкая, без латекса", "Держится на коже 3–5 дней", "Подходит для спортсменов"]
+                    image: "maderoterapija.jpg",
+                    benefits: [
+                        "Уменьшает целлюлит",
+                        "Моделирует и подтягивает тело",
+                        "Улучшает кровообращение и лимфодренаж",
+                        "Выводит лишнюю жидкость и токсины",
+                        "Ускоряет обмен веществ",
+                        "Повышает тонус и эластичность кожи"
+                    ],
+                    applications: [
+                        "Живот, бёдра, ягодицы",
+                        "Руки и спина",
+                        "Лицо и зона декольте"
+                    ]
                 },
                 {
                     title: "Фасциальная терапия Stecco",
@@ -1317,23 +1358,50 @@
             document.getElementById('navLinks').classList.toggle('active');
         }
 
-        // Handle form submission
-        function handleFormSubmit(e) {
+      
+        //send mail
+        async function handleFormSubmit(e) {
             e.preventDefault();
             const form = e.target;
-            const data = new FormData(form);
-            
-            const mailtoLink = `mailto:ivan.tasin@gmail.com?subject=Nova poruka sa sajta Riflex Centar&body=Ime: ${encodeURIComponent(data.get('name'))}%0D%0AEmail: ${encodeURIComponent(data.get('email'))}%0D%0ATelefon: ${encodeURIComponent(data.get('phone'))}%0D%0A%0D%0APoruka:%0D%0A${encodeURIComponent(data.get('message'))}`;
-            
-            window.location.href = mailtoLink;
-            
-            document.getElementById('successMessage').style.display = 'block';
-            form.reset();
-            
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'none';
-            }, 5000);
+            if (!form.checkValidity()) { form.reportValidity(); return; }
+
+            // koristimo imena polja kao u formi: author, email, phone, subject, message
+            const name = (form.querySelector('input[name="author"]')?.value || '').trim();
+            const email = (form.querySelector('input[name="email"]')?.value || '').trim();
+            const phone = (form.querySelector('input[name="phone"]')?.value || '').trim();
+            const subject = (form.querySelector('input[name="subject"]')?.value || '').trim();
+            const message = (form.querySelector('textarea[name="message"]')?.value || '').trim();
+            const msgEl = document.getElementById('successMessage');
+
+            const emailJsReady = [EMAILJS_USER_ID, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID]
+                .every(v => typeof v === 'string' && v.trim() !== '');
+
+            if (emailJsReady) {
+                try {
+                    console.log('Sending via EmailJS...', { service: EMAILJS_SERVICE_ID, template: EMAILJS_TEMPLATE_ID });
+                    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                        from_name: name,
+                        from_email: email,
+                        from_phone: phone,
+                        subject: subject || 'Poruka sa sajta Riflex Centar',
+                        message: message
+                    });
+                    if (msgEl) { msgEl.textContent = 'Poruka je uspešno poslata!'; msgEl.style.display = 'block'; }
+                    form.reset();
+                } catch (err) {
+                    console.error('EmailJS error:', err);
+                    alert('Greška pri slanju poruke. Pogledaj konzolu za detalje.');
+                } finally {
+                    setTimeout(() => { if (msgEl) msgEl.style.display = 'none'; }, 5000);
+                }
+                return;
+            }
+
+            // fallback (samo ako EmailJS nije konfigurisan)
+            const body = encodeURIComponent(`Ime: ${name}\r\nEmail: ${email}\r\nTelefon: ${phone}\r\n\r\nPoruka:\r\n${message}`);
+            window.location.href = `mailto:ivan.tasin@gmail.com?subject=${encodeURIComponent(subject || 'Poruka sa sajta')}&body=${body}`;
         }
+
 
         // Smooth scroll
         function smoothScroll(e) {
@@ -1351,29 +1419,83 @@
             }
         }
 
-        // Initialize
+        // Inicijalizacija: registruj handler bez duplih listener-a
         document.addEventListener('DOMContentLoaded', function() {
-            // Render initial services
-            renderServices();
-            
-            // Language buttons
+            try { renderServices(); } catch(_) {}
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.addEventListener('click', () => changeLanguage(btn.getAttribute('data-lang')));
             });
-            
-            // Mobile menu
             const mobileBtn = document.getElementById('mobileMenuBtn');
-            if (mobileBtn) {
-                mobileBtn.addEventListener('click', toggleMobileMenu);
-            }
-            
-            // Contact form
+            if (mobileBtn) mobileBtn.addEventListener('click', toggleMobileMenu);
+
+            // Contact form: handle server-side submit with AJAX
             const form = document.getElementById('contactForm');
             if (form) {
-                form.addEventListener('submit', handleFormSubmit);
+                const useServer = form.dataset.useServer === '1' || form.dataset.useServer === 'true';
+                if (useServer) {
+                    // Handle form submission via AJAX to PHP script
+                    form.addEventListener('submit', async function(e) {
+                        e.preventDefault();
+                        const formData = new FormData(form);
+                        const msgEl = document.getElementById('successMessage');
+                        const submitBtn = form.querySelector('button[type="submit"]');
+                        
+                        // Disable submit button
+                        if (submitBtn) {
+                            submitBtn.disabled = true;
+                            submitBtn.textContent = 'Šalje se...';
+                        }
+                        
+                        try {
+                            const response = await fetch('php/contact.php', {
+                                method: 'POST',
+                                body: formData
+                            });
+                            
+                            const result = await response.json();
+                            
+                            if (result.success) {
+                                if (msgEl) {
+                                    msgEl.textContent = result.message || 'Poruka je uspešno poslata!';
+                                    msgEl.style.display = 'block';
+                                    msgEl.style.background = '#4caf50';
+                                }
+                                form.reset();
+                            } else {
+                                if (msgEl) {
+                                    msgEl.textContent = result.message || 'Greška pri slanju poruke.';
+                                    msgEl.style.display = 'block';
+                                    msgEl.style.background = '#f44336';
+                                }
+                            }
+                        } catch (error) {
+                            console.error('Form submission error:', error);
+                            if (msgEl) {
+                                msgEl.textContent = 'Greška pri slanju poruke. Molimo pokušajte kasnije.';
+                                msgEl.style.display = 'block';
+                                msgEl.style.background = '#f44336';
+                            }
+                        } finally {
+                            // Re-enable submit button
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                const submitText = document.querySelector('.translate[data-key="form_submit"]');
+                                submitBtn.textContent = submitText ? submitText.textContent : 'Pošalji';
+                            }
+                            
+                            // Hide message after 5 seconds
+                            setTimeout(() => {
+                                if (msgEl) msgEl.style.display = 'none';
+                            }, 5000);
+                        }
+                    });
+                } else {
+                    // attach JS handler for client-side sending (EmailJS or mailto fallback)
+                    form.removeEventListener('submit', handleFormSubmit);
+                    form.addEventListener('submit', handleFormSubmit);
+                }
             }
-            
-            // Smooth scrolling
+
             document.querySelectorAll('a[href^="#"]').forEach(link => {
                 link.addEventListener('click', smoothScroll);
             });

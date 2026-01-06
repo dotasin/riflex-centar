@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <title>Riflex Centar – Sajt u pripremi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Riflex centar – masaža, relaksacija i briga o vašem telu. Sajt je u pripremi.">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #111827, #0f766e);
+            color: #f9fafb;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wrapper {
+            max-width: 480px;
+            width: 100%;
+            padding: 24px;
+        }
+
+        .card {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 18px;
+            padding: 28px 24px 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-circle {
+            width: 68px;
+            height: 68px;
+            border-radius: 999px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 30% 20%, #a7f3d0, #0f766e);
+            color: #022c22;
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            font-size: 16px;
+            font-weight: 500;
+            color: #a5b4fc;
+            margin-bottom: 18px;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #e5e7eb;
+            margin-bottom: 18px;
+        }
+
+        .tagline {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #9ca3af;
+            margin-bottom: 10px;
+        }
+
+        .contact-box {
+            margin-top: 10px;
+            padding-top: 14px;
+            border-top: 1px dashed rgba(148, 163, 184, 0.5);
+            font-size: 14px;
+            color: #cbd5f5;
+        }
+
+        .contact-box a {
+            color: #a5b4fc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            border: 1px solid rgba(96, 165, 250, 0.6);
+            color: #bfdbfe;
+            margin-bottom: 16px;
+            background: rgba(15, 23, 42, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 12px;
+            color: #9ca3af;
+            margin-top: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="card">
+        <div class="logo-circle">
+            RC
+        </div>
+
+        <div class="tagline">Masaža · Relaksacija · Regeneracija</div>
+
+        <span class="pill">Sajt u pripremi</span>
+
+        <h1>Riflex Centar</h1>
+        <h2>Uskoro lansiramo novi sajt</h2>
+
+        <p>
+            Radimo na novom online iskustvu za vaš potpuni reset tela i uma.
+            U međuvremenu nas možete kontaktirati za termine i sve informacije.
+        </p>
+
+        <div class="contact-box">
+            Rezervacije i informacije:<br>
+            📞 <a href="tel:+381605658461">+381 60 5658 461</a><br>
+            ✉️ <a href="mailto:r.ignjatov@gmail.com">r.ignjatov@gmail.com</a>
+        </div>
+    </div>
+
+    <footer>
+        © <span id="year"></span> Riflex Centar. Sva prava zadržana.
+    </footer>
+</div>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
