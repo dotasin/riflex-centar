@@ -776,6 +776,35 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .contact-phone {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-apps {
+            margin-top: 6px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .contact-app {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-app img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .whatsapp { color: #25D366; }
+        .viber { color: #7360F2; }
     </style>
 </head>
 <body>
@@ -907,7 +936,36 @@
                         <div class="info-icon">📞</div>
                         <div>
                             <strong class="translate" data-key="contact_phone">Telefon</strong><br>
-                            <a href="tel:+381123456789" style="color: var(--dark); text-decoration: none;">+381 12 345 6789</a>
+
+                            <a href="tel:+381123456789" class="contact-phone">
+                                +381 12 345 6789
+                            </a>
+
+                            <div class="contact-apps">
+
+                                <!-- WhatsApp -->
+                                <a href="https://wa.me/381123456789"
+                                target="_blank"
+                                rel="noopener"
+                                class="contact-app whatsapp"
+                                aria-label="Chat on WhatsApp">
+                                    <svg viewBox="0 0 32 32">
+                                        <path d="M16 2C8.8 2 3 7.6 3 14.5c0 2.5.8 4.8 2.3 6.8L3 30l9.1-2.3c1.8.5 2.6.7 3.9.7 7.2 0 13-5.6 13-12.5S23.2 2 16 2z"/>
+                                    </svg>
+                                    WhatsApp
+                                </a>
+
+                                <!-- Viber -->
+                                <a href="viber://chat?number=381123456789"
+                                class="contact-app viber"
+                                aria-label="Chat on Viber">
+                                    <svg viewBox="0 0 32 32">
+                                        <path d="M16 3c7 0 13 4.9 13 11 0 6.1-6 11-13 11-1.8 0-3.5-.3-5-.8L3 29l3.5-7.3C5.2 20.2 4 17.7 4 14 4 7.9 9 3 16 3z"/>
+                                    </svg>
+                                    Viber
+                                </a>
+
+                            </div>
                         </div>
                     </div>
                     <div class="info-item">
