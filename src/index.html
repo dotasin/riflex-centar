@@ -387,25 +387,25 @@
         }
 
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            display: block;
             margin-top: 2rem;
         }
 
         .about-image {
-            width: 100%;
-            height: 600px;
+            float: left;
+            width: 300px;
+            height: auto;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0,0,0,0.15);
             position: relative;
+            margin-right: 2rem;
+            margin-bottom: 1rem;
         }
 
         .about-image img {
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: cover;
         }
 
@@ -451,6 +451,7 @@
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             margin-top: 2rem;
+            clear: both;
         }
 
         .credentials h4 {
@@ -480,8 +481,9 @@
             border-left: 4px solid var(--primary);
             transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
-            align-items: center;
-            gap: 1rem;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
         }
 
         .credentials-list li:hover {
@@ -674,7 +676,7 @@
 
         .map-container {
             width: 100%;
-            height: 300px;
+            height: 370px;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
@@ -745,12 +747,15 @@
             }
 
             .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+                display: block;
             }
 
             .about-image {
-                height: 400px;
+                float: none;
+                width: 100%;
+                height: auto;
+                margin-right: 0;
+                margin-bottom: 1rem;
             }
 
             .nav-links {
@@ -846,17 +851,32 @@
     <section class="about" id="about" itemscope itemtype="https://schema.org/AboutPage">
         <div class="container">
             <h2 class="section-title translate" data-key="about_title">O nama</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="./radovan-ignjatov.jpg" alt="Fizioterapeut - Riflex Centar" id="therapistImage">
-                </div>
-                <div class="about-text">
-                    <h3 class="translate" data-key="about_name">Ime Prezime</h3>
-                    <h4 class="translate" data-key="about_title_profession">Diplomirani fizioterapeut</h4>
-                    <p class="translate" data-key="about_description">
+                <p class="translate" data-key="nav_above_about">
                         Sa više od 10 godina iskustva u fizioterapiji i rehabilitaciji, posvećen/a sam pružanju najvišeg kvaliteta usluga svojim pacijentima. 
                         Specijalizovan/a sam za moderne tehnike fizioterapije, uključujući Mulligan metodu, fascialnu terapiju i sportsku rehabilitaciju.
                         Moj cilj je da svakom pacijentu pomognem da postigne optimalno zdravlje i pokretljivost.
+                    </p>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-image">
+                        <img src="./radovan-ignjatov.jpg" alt="Fizioterapeut - Riflex Centar" id="therapistImage">
+                    </div>
+                    <h3 class="translate" data-key="about_name">Radovan Ignajtov</h3>
+                    <h4 class="translate" data-key="about_title_profession">Diplomirani specijalista korektivne gimnastike i kineziterapije</h4>
+                    <p class="translate" data-key="about_description">
+                        Radovan Ignjatov (1986) je diplomirani specijalista korektivne gimnastike i kineziterapije sa više
+                        od 15 godina profesionalnog iskustva. Srednje obrazovanje završio je za fizioterapeuta, a
+                        karijeru započeo u Domu zdravlja u oblasti fizikalne medicine i kineziterapije.
+                        Značajno kliničko iskustvo stekao je u Institutu za kardiovaskularne bolesti Sremska
+                        Kamenica, radeći u sektorima kardiologije i kardiohirurgije.
+                        Dodatno iskustvo obuhvata i rad u oblasti banjskog lečenja i rehabilitacije.
+                        Ključni deo profesionalnog razvoja vezan je za rad u Nemačkoj, gde je bio angažovan u
+                        specijalizovanom centru za postoperativni oporavak, neurorehabilitaciju i sportski
+                        oporavak, uz primenu savremenih rehabilitacionih i terapijskih protokola.
+                        Dugi niz godina posvećen je edukacijom i zdravim načinom života kojeg i bezuslovno prenosi.
+                        Danas je vlasnik i idejni kreator centra RIFLEX, gde primenjuje znanje i praksu stečene kroz
+                        dugogodišnji rad, brojne seminare i kontinuirano stručno usavršavanje. Smatra da proces
+                        učenja i profesionalnog razvoja nikada ne prestaje — naprotiv, tek počinje.
                     </p>
                     
                     <div class="credentials">
@@ -886,44 +906,6 @@
         <div class="container">
             <h2 class="section-title translate" data-key="contact_title">Kontaktirajte nas</h2>
             <div class="contact-content">
-                <div class="contact-form">
-                    <div class="success-message" id="successMessage">Poruka je uspešno poslata!</div>
-                    <form id="contactForm" action="php/contact.php" method="post" itemscope itemtype="https://schema.org/ContactPoint" data-use-server="1">
-                        <div class="row" style="display:flex;gap:1rem;flex-wrap:wrap;">
-                            <div style="flex:1;min-width:200px;">
-                                <div class="form-group">
-                                    <label class="translate" data-key="form_name">Ime i prezime</label>
-                                    <input type="text" name="author" required placeholder="Ime prezime">
-                                </div>
-                            </div>
-                            <div style="flex:1;min-width:200px;">
-                                <div class="form-group">
-                                    <label class="translate" data-key="form_email">Email</label>
-                                    <input type="email" name="email" required placeholder="Email">
-                                </div>
-                            </div>
-                            <div style="flex:1;min-width:200px;">
-                                <div class="form-group">
-                                    <label>Naslov</label>
-                                    <input type="text" name="subject" required placeholder="Tema">
-                                </div>
-                            </div>
-                            <div style="flex:1;min-width:200px;">
-                                <div class="form-group">
-                                    <label class="translate" data-key="form_phone">Telefon</label>
-                                    <input type="tel" name="phone" placeholder="Telefon">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="translate" data-key="form_message">Poruka</label>
-                            <textarea name="message" required placeholder="Vaša poruka"></textarea>
-                        </div>
-
-                        <button type="submit" class="submit-btn translate" data-key="form_submit">Pošalji</button>
-                    </form>
-                </div>
                 <div class="contact-info">
                     <div class="info-item">
                         <div class="info-icon">📍</div>
@@ -975,9 +957,31 @@
                             <a href="mailto:r.ignjatov@gmail.com" style="color: var(--dark); text-decoration: none;">r.ignjatov@gmail.com</a>
                         </div>
                     </div>
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2806.5!2d19.8766!3d45.2502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475b106!2sPreradovi%C4%87eva%20183%2C%20Petrovaradin%2C%20Serbia!5e0!3m2!1sen!2srs!4v1234567890" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="currentColor" d="M7 2C4.24 2 2 4.24 2 7V17C2 19.76 4.24 22 7 22H17C19.76 22 22 19.76 22 17V7C22 4.24 19.76 2 17 2H7ZM12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7ZM18 6.5C18.55 6.5 19 6.05 19 5.5C19 4.95 18.55 4.5 18 4.5C17.45 4.5 17 4.95 17 5.5C17 6.05 17.45 6.5 18 6.5Z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Instagram</strong><br>
+                            <a href="https://www.instagram.com/riflexcentar/" target="_blank" style="color: var(--dark); text-decoration: none;">@riflexcentar</a>
+                        </div>
                     </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="currentColor" d="M22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 16.84 5.66 20.8 10.44 21.76V14.89H7.9V12H10.44V9.8C10.44 7.3 11.93 5.92 14.2 5.92C15.29 5.92 16.43 6.11 16.43 6.11V8.56H15.18C13.95 8.56 13.56 9.32 13.56 10.1V12H16.32L15.88 14.89H13.56V21.76C18.34 20.8 22 16.84 22 12Z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Facebook</strong><br>
+                            <a href="https://www.facebook.com/radovan.ignjatov" target="_blank" style="color: var(--dark); text-decoration: none;">Radovan Ignjatov</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2806.5!2d19.8766!3d45.2502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475b106!2sPreradovi%C4%87eva%20183%2C%20Petrovaradin%2C%20Serbia!5e0!3m2!1sen!2srs!4v1234567890" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -1007,6 +1011,7 @@
             sr: {
                 nav_home: "Početna",
                 nav_about: "O nama",
+                nav_above_about: "Sa više od 10 godina iskustva u fizioterapiji i rehabilitaciji, posvećen/a sam pružanju najvišeg kvaliteta usluga svojim pacijentima. Specijalizovan/a sam za moderne tehnike fizioterapije, uključujući Mulligan metodu, fascialnu terapiju i sportsku rehabilitaciju. Moj cilj je da svakom pacijentu pomognem da postigne optimalno zdravlje i pokretljivost.",
                 nav_services: "Usluge",
                 nav_contact: "Kontakt",
                 hero_title: "Dobrodošli u Riflex Centar",
@@ -1015,7 +1020,7 @@
                 about_title: "O nama",
                 about_name: "Ime Prezime",
                 about_title_profession: "Diplomirani fizioterapeut",
-                about_description: "Sa više od 10 godina iskustva u fizioterapiji i rehabilitaciji, posvećen/a sam pružanju najvišeg kvaliteta usluga svojim pacijentima. Specijalizovan/a sam za moderne tehnike fizioterapije, uključujući Mulligan metodu, fascialnu terapiju i sportsku rehabilitaciju. Moj cilj je da svakom pacijentu pomognem da postigne optimalno zdravlje i pokretljivost.",
+                about_description: "Radovan Ignjatov (1986) je diplomirani specijalista korektivne gimnastike i kineziterapije sa više od 15 godina profesionalnog iskustva. Srednje obrazovanje završio je za fizioterapeuta, karijeru započeo u Domu zdravlja u oblasti fizikalne medicine i kineziterapije. Značajno kliničko iskustvo stekao je u Institutu za kardiovaskularne bolesti Sremska Kamenica, radeći u sektorima kardiologije i kardiohirurgije. Dodatno iskustvo obuhvata i rad u oblasti banjskog lečenja i rehabilitacije. Ključni deo profesionalnog razvoja vezan je za rad u Nemačkoj, gde je bio angažovan u specijalizovanom centru za postoperativni oporavak, neurorehabilitaciju i sportski oporavak, uz primenu savremenih rehabilitacionih i terapijskih protokola. Dugi niz godina posvećen je edukacijom i zdravim načinom života kojeg i bezuslovno prenosi. Danas je vlasnik i idejni kreator centra RIFLEX, gde primenjuje znanje i praksu stečene kroz dugogodišnji rad, brojne seminare i kontinuirano stručno usavršavanje. Smatra da proces učenja i profesionalnog razvoja nikada ne prestaje naprotiv, tek počinje.",
                 about_credentials: "Sertifikati i edukacije",
                 cert_mulligan: "Sertifikovani Mulligan praktičar - Level C",
                 cert_kinesio: "Kinesio Taping Association International (KTAI)",
@@ -1039,15 +1044,16 @@
             en: {
                 nav_home: "Home",
                 nav_about: "About Us",
+                nav_above_about: "I believe in an individual approach, patience, and consistent work. I have been engaged in rehabilitation, kinesiotherapy, and corrective gymnastics for over 15 years, with a clear goal to help each client regain functionality, confidence in movement, and quality of life, all accompanied by a smile. For me, limits do not exist; there is only the process. \"The impossible only requires a little more time — believe in yourself and a better tomorrow.",
                 nav_services: "Services",
                 nav_contact: "Contact",
                 hero_title: "Welcome to Riflex Center",
                 hero_subtitle: "Your path to health, mobility and better quality of life",
                 hero_cta: "Book Appointment",
                 about_title: "About Us",
-                about_name: "Name Surname",
+                about_name: "Radovan Ignjatov",
                 about_title_profession: "Licensed Physiotherapist",
-                about_description: "With over 10 years of experience in physiotherapy and rehabilitation, I am dedicated to providing the highest quality services to my patients. I specialize in modern physiotherapy techniques, including the Mulligan method, fascial therapy, and sports rehabilitation. My goal is to help each patient achieve optimal health and mobility.",
+                about_description: "Radovan Ignjatov (1986) is a certified specialist in corrective gymnastics and kinesitherapy with more than 15 years of professional experience. He completed his secondary education as a physiotherapist and began his career at a Primary Health Care Center, working in the fields of physical medicine and kinesitherapy. He gained significant clinical experience at the Institute of Cardiovascular Diseases in Sremska Kamenica, where he worked in the departments of cardiology and cardiac surgery. His additional experience includes work in spa treatment and rehabilitation. A key part of his professional development is linked to his work in Germany, where he was engaged in a specialized center for postoperative recovery, neurorehabilitation, and sports recovery, applying modern rehabilitation and therapeutic protocols.For many years, he has been dedicated to education and a healthy lifestyle, which he consistently promotes and lives by. Today, he is the owner and visionary founder of the RIFLEX center, where he applies the knowledge and practice gained through many years of work, numerous seminars, and continuous professional development. He believes that the process of learning and professional growth never ends — on the contrary, it is only just beginning",
                 about_credentials: "Certificates and Education",
                 cert_mulligan: "Certified Mulligan Practitioner - Level C",
                 cert_kinesio: "Kinesio Taping Association International (KTAI)",
@@ -1071,15 +1077,16 @@
             de: {
                 nav_home: "Startseite",
                 nav_about: "Über uns",
+                nav_above_about: "I believe in an individual approach, patience, and consistent work. I have been engaged in rehabilitation, kinesiotherapy, and corrective gymnastics for over 15 years, with a clear goal to help each client regain functionality, confidence in movement, and quality of life, all accompanied by a smile. For me, limits do not exist there is only the process. The impossible only requires a little more time — believe in yourself and a better tomorrow.",
                 nav_services: "Dienstleistungen",
                 nav_contact: "Kontakt",
                 hero_title: "Willkommen im Riflex Center",
                 hero_subtitle: "Ihr Weg zu Gesundheit, Mobilität und besserer Lebensqualität",
                 hero_cta: "Termin buchen",
                 about_title: "Über uns",
-                about_name: "Vor- und Nachname",
+                about_name: "Radovan Ignjatov",
                 about_title_profession: "Diplomierter Physiotherapeut",
-                about_description: "Mit über 10 Jahren Erfahrung in Physiotherapie und Rehabilitation widme ich mich der Bereitstellung höchster Qualität für meine Patienten. Ich bin spezialisiert auf moderne Physiotherapietechniken, einschließlich der Mulligan-Methode, Faszientherapie und Sportrehabilitation. Mein Ziel ist es, jedem Patienten zu helfen, optimale Gesundheit und Mobilität zu erreichen.",
+                about_description: "Radovan Ignjatov (1986) ist diplomierter Spezialist für korrigierende Gymnastik und Kinesiotherapie mit über 15 Jahren Berufserfahrung. Seine schulische Ausbildung absolvierte er als Physiotherapeut, seine berufliche Laufbahn begann er in einem Gesundheitszentrum im Bereich der physikalischen Medizin und Kinesiotherapie. Umfangreiche klinische Erfahrung sammelte er am Institut für Herz-Kreislauf-Erkrankungen in Sremska Kamenica, wo er in den Bereichen Kardiologie und Herzchirurgie tätig war. Weitere Berufserfahrung umfasst die Arbeit im Bereich der Kur- und Rehabilitationsmedizin. Ein wesentlicher Teil seiner beruflichen Entwicklung ist mit seiner Tätigkeit in Deutschland verbunden, wo er in einem spezialisierten Zentrum für postoperative Rehabilitation, Neurorehabilitation und sportliche Regeneration arbeitete und moderne Rehabilitations- und Therapiekonzepte anwendete. Seit vielen Jahren widmet er sich der Weiterbildung und einem gesunden Lebensstil, den er konsequent lebt und weitergibt. Heute ist er Inhaber und ideeller Gründer des Zentrums RIFLEX, in dem er sein über viele Jahre erworbenes Wissen, zahlreiche Fortbildungen und kontinuierliche fachliche Weiterentwicklung in die Praxis umsetzt. Er ist der Überzeugung, dass der Prozess des Lernens und der beruflichen Weiterentwicklung niemals endet im Gegenteil, er beginnt erst richtig.",
                 about_credentials: "Zertifikate und Ausbildung",
                 cert_mulligan: "Zertifizierter Mulligan-Praktiker - Level C",
                 cert_kinesio: "Kinesio Taping Association International (KTAI)",
@@ -1103,15 +1110,16 @@
             ru: {
                 nav_home: "Главная",
                 nav_about: "О нас",
+                nav_above_about: "I believe in an individual approach, patience, and consistent work. I have been engaged in rehabilitation, kinesiotherapy, and corrective gymnastics for over 15 years, with a clear goal to help each client regain functionality, confidence in movement, and quality of life, all accompanied by a smile. For me, limits do not exist; there is only the process. \"The impossible only requires a little more time — believe in yourself and a better tomorrow.",
                 nav_services: "Услуги",
                 nav_contact: "Контакт",
                 hero_title: "Добро пожаловать в Riflex Center",
                 hero_subtitle: "Ваш путь к здоровью, подвижности и лучшему качеству жизни",
                 hero_cta: "Записаться на прием",
                 about_title: "О нас",
-                about_name: "Имя Фамилия",
+                about_name: "Радован Игњатов",
                 about_title_profession: "Дипломированный физиотерапевт",
-                about_description: "Имея более 10 лет опыта в физиотерапии и реабилитации, я посвящаю себя предоставлению услуг высочайшего качества своим пациентам. Я специализируюсь на современных методах физиотерапии, включая метод Муллигана, фасциальную терапию и спортивную реабилитацию. Моя цель - помочь каждому пациенту достичь оптимального здоровья и подвижности.",
+                about_description: "Радован Игнятов (1986) — дипломированный специалист по корректирующей гимнастике и кинезитерапии с более чем 15-летним профессиональным опытом. Среднее образование получил по специальности физиотерапевт, а профессиональную карьеру начал в центре первичной медицинской помощи в области физической медицины и кинезитерапии. Значительный клинический опыт приобрел в Институте сердечно-сосудистых заболеваний в Сремской Каменице, работая в отделениях кардиологии и кардиохирургии. Дополнительный опыт включает работу в сфере санаторного лечения и реабилитации. Ключевая часть его профессионального развития связана с работой в Германии, где он был задействован в специализированном центре послеоперационного восстановления, нейрореабилитации и спортивного восстановления с применением современных реабилитационных и терапевтических протоколов. На протяжении многих лет он посвящает себя обучению и здоровому образу жизни, который безусловно пропагандирует и практикует. В настоящее время он является владельцем и идейным создателем центра RIFLEX, где применяет знания и опыт, полученные за годы работы, участия в многочисленных семинарах и непрерывного профессионального совершенствования. Он считает, что процесс обучения и профессионального развития никогда не заканчивается — напротив, он только начинается.",
                 about_credentials: "Сертификаты и образование",
                 cert_mulligan: "Сертифицированный практик Муллигана - Уровень C",
                 cert_kinesio: "Международная ассоциация кинезиотейпирования (KTAI)",
